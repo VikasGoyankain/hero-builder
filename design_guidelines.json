@@ -1,91 +1,116 @@
 {
-  "theme": "LIGHT",
-  "archetype": "4",
-  "archetype_name": "Swiss & High-Contrast",
+  "theme": "Light & Dark Mode",
+  "archetype": "Archetype 4 (Swiss/Authority) & 5 (Luxury) Hybrid - Premium Law School Admin",
+  "brand_identity": {
+    "tone": "Authoritative, premium, organized, modern SaaS",
+    "description": "A refined admin panel comparable to Linear or Vercel but styled with a classic law-school editorial feel. Uses warm parchment backgrounds and deep legal red to establish trust and authority while keeping layouts functional, calm, and data-dense."
+  },
   "typography": {
-    "heading_font": "Playfair Display",
-    "body_font": "IBM Plex Sans",
-    "hierarchy": {
-      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none font-black",
-      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight",
-      "h3": "text-xl sm:text-2xl",
-      "body": "text-base leading-relaxed md:text-lg",
-      "labels": "text-xs font-bold tracking-[0.2em] uppercase"
-    }
-  },
-  "colors": {
-    "primary": "#0B192C",
-    "primary_foreground": "#FFFFFF",
-    "background": "#FAFAFA",
-    "foreground": "#111111",
-    "secondary": "#EAE7E0",
-    "muted": "#737373",
-    "accent": "#9B2C2C",
-    "card_background": "#FFFFFF",
-    "border": "#E5E5E5"
-  },
-  "spacing_and_layout": {
-    "philosophy": "Mobile-first, easy tapping, highly readable. Generous internal padding.",
-    "section_padding": "py-16 md:py-24 px-4 sm:px-6 md:px-8",
-    "container": "max-w-[1200px] mx-auto",
-    "tap_targets": "min-h-[48px] min-w-[48px] for all interactive elements",
-    "grid_system": "Single column on mobile, bento/tetris inspired rigid grid on desktop."
-  },
-  "components": {
-    "buttons": {
-      "primary": "rounded-md bg-primary text-primary-foreground px-6 py-4 font-semibold shadow-sm flex items-center justify-center transition-transform active:scale-95",
-      "ghost": "rounded-md border-2 border-foreground/20 bg-transparent px-6 py-4 font-semibold text-foreground flex items-center justify-center transition-colors hover:border-primary active:scale-95"
+    "rules": {
+      "headings": "Playfair Display",
+      "body_and_ui": "IBM Plex Sans"
     },
-    "cards": {
-      "style": "bg-white border border-border shadow-sm rounded-xl p-6 md:p-8",
-      "hover": "hover:shadow-md transition-shadow duration-200"
+    "scales": {
+      "h1": "text-3xl sm:text-4xl font-bold tracking-tight",
+      "h2": "text-2xl sm:text-3xl font-semibold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-semibold",
+      "metric_value": "text-4xl sm:text-5xl font-light tracking-tighter text-slate-900 dark:text-white",
+      "metric_label": "text-sm font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400",
+      "body": "text-sm sm:text-base leading-relaxed",
+      "small": "text-xs font-medium uppercase tracking-widest"
     },
-    "header": {
-      "mobile": "h-16 border-b border-border bg-white flex items-center justify-between px-4 sticky top-0 z-50",
-      "desktop": "h-20 border-b border-border bg-white/95 backdrop-blur-sm flex items-center justify-between px-8 sticky top-0 z-50",
-      "note": "Avoid backdrop-blur-xl as it lags low-end phones. Use solid white or very light blur."
-    },
-    "navigation": {
-      "mobile_bottom_bar": "fixed bottom-0 inset-x-0 z-40 bg-white border-t border-border grid grid-cols-3 h-[60px] pb-safe"
-    }
-  },
-  "animations": {
-    "philosophy": "Hardware-accelerated, lightweight, respectful of low-end 3G devices.",
-    "rules": [
-      "Use CSS transforms (translate, scale) and opacity only.",
-      "Avoid Math.pow/JS loops for counters; use lightweight CSS keyframes or raw text.",
-      "Remove heavy backdrop-blur filters.",
-      "Disable complex enter animations on mobile; prefer simple fade-ins."
+    "font_imports": [
+      "@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');"
     ]
   },
-  "media": {
-    "image_urls": [
-      {
-        "category": "Hero Background",
-        "url": "https://images.pexels.com/photos/6077797/pexels-photo-6077797.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        "description": "Golden justice scales on a desk"
-      },
-      {
-        "category": "Library / Study",
-        "url": "https://images.unsplash.com/photo-1562529163-2cded489cc9a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwyfHxsYXclMjBzY2hvb2wlMjBsaWJyYXJ5fGVufDB8fHx8MTc4Mjk3MDg2Mnww&ixlib=rb-4.1.0&q=85",
-        "description": "brown building with lighted chandeliers"
-      }
-    ],
-    "optimization": "Use WebP or AVIF. Lazy load all images below the fold. Max height 80vh on mobile."
+  "colors": {
+    "light": {
+      "background": "#F9F7F3",
+      "surface": "#FFFFFF",
+      "primary": "#8B1C1C",
+      "primary_hover": "#7A1515",
+      "text_main": "#1A1A1A",
+      "text_muted": "#5C5C5C",
+      "border": "#E5E0D8",
+      "success": "#166534",
+      "warning": "#B45309",
+      "error": "#991B1B"
+    },
+    "dark": {
+      "background": "#110F0E",
+      "surface": "#1A1817",
+      "primary": "#A62626",
+      "primary_hover": "#BF3131",
+      "text_main": "#EDEDED",
+      "text_muted": "#A3A3A3",
+      "border": "#2E2A28",
+      "success": "#22C55E",
+      "warning": "#F59E0B",
+      "error": "#EF4444"
+    }
   },
-  "accessibility": {
-    "contrast": "Text must meet minimum 4.5:1 ratio against background. Brand color #0B192C easily passes.",
-    "testing_attributes": "All interactive elements MUST have a data-testid attribute in kebab-case."
+  "spacing_and_layout": {
+    "philosophy": "Calm, progressive disclosure. High whitespace, minimal borders. Linear/Vercel style architecture.",
+    "sidebar": "w-64 fixed height, collapsible on desktop. Mobile off-canvas drawer.",
+    "container_padding": "p-4 sm:p-6 lg:p-8",
+    "border_radius": {
+      "cards": "rounded-2xl",
+      "buttons": "rounded-lg",
+      "inputs": "rounded-lg",
+      "badges": "rounded-full"
+    },
+    "shadows": {
+      "light": "shadow-[0_2px_10px_rgba(0,0,0,0.04)]",
+      "dark": "shadow-[0_2px_10px_rgba(0,0,0,0.2)]"
+    }
+  },
+  "components": {
+    "buttons": "Shadcn based. Primary buttons use Deep Legal Red background. Subtle scale-down effect on active state. Icons inside buttons.",
+    "cards": "Flat background, subtle 1px border. Linear-style minimalism. Padding p-6.",
+    "tables": "Searchable. Header row has subtle background. Rows highlight on hover. Checkboxes for bulk actions. Status badges (e.g., Active/Inactive) use pill shape.",
+    "forms_and_inputs": "Shadcn Input, Select, and Textarea. Focus states must have an outer ring in primary color.",
+    "badges": "Soft background tint + distinct dot indicator. e.g., bg-green-100 text-green-800 with a small green dot.",
+    "command_palette": "Global search triggered by Cmd+K. Overlays with glassmorphism backdrop.",
+    "drawers_and_dialogs": "Used for filters, quick-edits, or confirmations. Slide-in from right (drawers) or centered (dialogs).",
+    "blog_create_edit": "Multi-step/tabs (Content, SEO, Media) to prevent vertical fatigue. Sticky save bar at top."
+  },
+  "interactions": {
+    "hover_states": "Interactive elements must shift in color and/or slight translation (-translate-y-0.5 for cards).",
+    "transitions": "transition-all duration-200 ease-in-out",
+    "loading": "Use skeleton loaders matching exact dimensions of final content. Pulse animation.",
+    "empty_states": "Minimalist icon, brief explanation text, and clear primary CTA button."
+  },
+  "media": [
+    {
+      "category": "Blog Placeholder",
+      "description": "Law student in library",
+      "url": "https://images.unsplash.com/photo-1561380851-39b27c4f1626?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHw0fHxsYXclMjBzdHVkZW50JTIwc3R1ZHlpbmclMjBsaWJyYXJ5fGVufDB8fHx8MTc4Mjk3NjgwN3ww&ixlib=rb-4.1.0&q=85"
+    },
+    {
+      "category": "Resource Placeholder",
+      "description": "Law books on a shelf",
+      "url": "https://images.unsplash.com/photo-1619771699034-fec6b1aabde3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzl8MHwxfHNlYXJjaHwyfHxsYXclMjBib29rcyUyMGdhdmVsfGVufDB8fHx8MTc4Mjk3NjgwN3ww&ixlib=rb-4.1.0&q=85"
+    },
+    {
+      "category": "Faculty Avatar",
+      "description": "Professional male lawyer",
+      "url": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzV8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBsYXd5ZXIlMjBwb3J0cmFpdHxlbnwwfHx8fDE3ODI5NzY4MDd8MA&ixlib=rb-4.1.0&q=85"
+    },
+    {
+      "category": "Student Avatar",
+      "description": "Female student in library",
+      "url": "https://images.unsplash.com/photo-1494809610410-160faaed4de0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxsYXclMjBzdHVkZW50JTIwc3R1ZHlpbmclMjBsaWJyYXJ5fGVufDB8fHx8MTc4Mjk3NjgwN3ww&ixlib=rb-4.1.0&q=85"
+    }
+  ],
+  "testing": {
+    "data_testid_rules": "All interactive elements (buttons, links, form inputs, menus, table rows, badges) MUST include a data-testid attribute formatted in kebab-case based on their role (e.g., 'global-search-trigger', 'create-blog-submit', 'sidebar-link-dashboard')."
   },
   "instructions_to_main_agent": [
-    "Refactor `routes/index.tsx` to optimize for mobile and low-end devices.",
-    "Replace heavy blur headers with solid backgrounds or minimal blurs.",
-    "Ensure all buttons/links have a minimum tap area of 48x48px (e.g., using `py-3 px-4` or `min-h-[48px]`).",
-    "Replace JS-heavy `requestAnimationFrame` counters with simpler IntersectionObserver CSS transitions, or just static numbers if performance drops.",
-    "Upgrade fonts to Playfair Display (Headings) and IBM Plex Sans (Body).",
-    "Restructure the 'TrustStrip' into a clean 2x2 or 2x3 grid on mobile to save space and reduce clutter.",
-    "Use data-testid on all key CTAs (e.g., data-testid='hero-counselling-button').",
-    "Ensure the bottom mobile bar has distinct, large touch targets with icons.",
-    "For the 'Air1Story', keep the image but use standard opacity fade on hover instead of heavy grayscale transitions which might drop frames on mobile."
+    "Prioritize the Admin login UI, Dashboard, and Blogs (Create/Edit) module.",
+    "Implement light and dark mode toggling using standard Tailwind class strategies.",
+    "Use lucide-react or @phosphor-icons/react for premium iconography.",
+    "Apply Playfair Display exclusively to major headings (H1/H2), and use IBM Plex Sans everywhere else.",
+    "Mock data interactions entirely via UI state (no backend). Implement complex tables, command palette, and sticky save bars precisely as described.",
+    "Never use placeholders for images; use the provided media URLs."
   ]
 }

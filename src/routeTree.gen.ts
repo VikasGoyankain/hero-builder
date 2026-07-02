@@ -24,7 +24,10 @@ import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as ToppersSlugRouteImport } from './routes/toppers/$slug'
 import { Route as TestimonialsSlugRouteImport } from './routes/testimonials/$slug'
 import { Route as FacultiesSlugRouteImport } from './routes/faculties/$slug'
+import { Route as ExamsSlugRouteImport } from './routes/exams/$slug'
 import { Route as CoursesSlugRouteImport } from './routes/courses/$slug'
+import { Route as ConversionSlugRouteImport } from './routes/conversion/$slug'
+import { Route as BrandSlugRouteImport } from './routes/brand/$slug'
 import { Route as BranchesSlugRouteImport } from './routes/branches/$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
@@ -103,9 +106,24 @@ const FacultiesSlugRoute = FacultiesSlugRouteImport.update({
   path: '/faculties/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExamsSlugRoute = ExamsSlugRouteImport.update({
+  id: '/exams/$slug',
+  path: '/exams/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CoursesSlugRoute = CoursesSlugRouteImport.update({
   id: '/courses/$slug',
   path: '/courses/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConversionSlugRoute = ConversionSlugRouteImport.update({
+  id: '/conversion/$slug',
+  path: '/conversion/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandSlugRoute = BrandSlugRouteImport.update({
+  id: '/brand/$slug',
+  path: '/brand/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BranchesSlugRoute = BranchesSlugRouteImport.update({
@@ -128,7 +146,10 @@ export interface FileRoutesByFullPath {
   '/scholarships': typeof ScholarshipsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/branches/$slug': typeof BranchesSlugRoute
+  '/brand/$slug': typeof BrandSlugRoute
+  '/conversion/$slug': typeof ConversionSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/exams/$slug': typeof ExamsSlugRoute
   '/faculties/$slug': typeof FacultiesSlugRoute
   '/testimonials/$slug': typeof TestimonialsSlugRoute
   '/toppers/$slug': typeof ToppersSlugRoute
@@ -148,7 +169,10 @@ export interface FileRoutesByTo {
   '/scholarships': typeof ScholarshipsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/branches/$slug': typeof BranchesSlugRoute
+  '/brand/$slug': typeof BrandSlugRoute
+  '/conversion/$slug': typeof ConversionSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/exams/$slug': typeof ExamsSlugRoute
   '/faculties/$slug': typeof FacultiesSlugRoute
   '/testimonials/$slug': typeof TestimonialsSlugRoute
   '/toppers/$slug': typeof ToppersSlugRoute
@@ -169,7 +193,10 @@ export interface FileRoutesById {
   '/scholarships': typeof ScholarshipsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/branches/$slug': typeof BranchesSlugRoute
+  '/brand/$slug': typeof BrandSlugRoute
+  '/conversion/$slug': typeof ConversionSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
+  '/exams/$slug': typeof ExamsSlugRoute
   '/faculties/$slug': typeof FacultiesSlugRoute
   '/testimonials/$slug': typeof TestimonialsSlugRoute
   '/toppers/$slug': typeof ToppersSlugRoute
@@ -191,7 +218,10 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/blog/$slug'
     | '/branches/$slug'
+    | '/brand/$slug'
+    | '/conversion/$slug'
     | '/courses/$slug'
+    | '/exams/$slug'
     | '/faculties/$slug'
     | '/testimonials/$slug'
     | '/toppers/$slug'
@@ -211,7 +241,10 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/blog/$slug'
     | '/branches/$slug'
+    | '/brand/$slug'
+    | '/conversion/$slug'
     | '/courses/$slug'
+    | '/exams/$slug'
     | '/faculties/$slug'
     | '/testimonials/$slug'
     | '/toppers/$slug'
@@ -231,7 +264,10 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/blog/$slug'
     | '/branches/$slug'
+    | '/brand/$slug'
+    | '/conversion/$slug'
     | '/courses/$slug'
+    | '/exams/$slug'
     | '/faculties/$slug'
     | '/testimonials/$slug'
     | '/toppers/$slug'
@@ -252,7 +288,10 @@ export interface RootRouteChildren {
   ScholarshipsRoute: typeof ScholarshipsRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BranchesSlugRoute: typeof BranchesSlugRoute
+  BrandSlugRoute: typeof BrandSlugRoute
+  ConversionSlugRoute: typeof ConversionSlugRoute
   CoursesSlugRoute: typeof CoursesSlugRoute
+  ExamsSlugRoute: typeof ExamsSlugRoute
   FacultiesSlugRoute: typeof FacultiesSlugRoute
   TestimonialsSlugRoute: typeof TestimonialsSlugRoute
   ToppersSlugRoute: typeof ToppersSlugRoute
@@ -371,11 +410,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FacultiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/exams/$slug': {
+      id: '/exams/$slug'
+      path: '/exams/$slug'
+      fullPath: '/exams/$slug'
+      preLoaderRoute: typeof ExamsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/courses/$slug': {
       id: '/courses/$slug'
       path: '/courses/$slug'
       fullPath: '/courses/$slug'
       preLoaderRoute: typeof CoursesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conversion/$slug': {
+      id: '/conversion/$slug'
+      path: '/conversion/$slug'
+      fullPath: '/conversion/$slug'
+      preLoaderRoute: typeof ConversionSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brand/$slug': {
+      id: '/brand/$slug'
+      path: '/brand/$slug'
+      fullPath: '/brand/$slug'
+      preLoaderRoute: typeof BrandSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/branches/$slug': {
@@ -404,7 +464,10 @@ const rootRouteChildren: RootRouteChildren = {
   ScholarshipsRoute: ScholarshipsRoute,
   BlogSlugRoute: BlogSlugRoute,
   BranchesSlugRoute: BranchesSlugRoute,
+  BrandSlugRoute: BrandSlugRoute,
+  ConversionSlugRoute: ConversionSlugRoute,
   CoursesSlugRoute: CoursesSlugRoute,
+  ExamsSlugRoute: ExamsSlugRoute,
   FacultiesSlugRoute: FacultiesSlugRoute,
   TestimonialsSlugRoute: TestimonialsSlugRoute,
   ToppersSlugRoute: ToppersSlugRoute,
