@@ -61,39 +61,27 @@ const navItems = [
 ];
 
 function TcrLogo({ variant = "badge" }: { variant?: "badge" | "inverted" }) {
-  if (variant === "inverted") {
-    return (
-      <span
-        className="inline-flex flex-col leading-none"
-        data-testid="footer-logo"
-        aria-label="TCR — A Brand by NLU Alumnus"
-      >
-        <span className="pl-[0.28em] font-serif text-3xl font-bold tracking-[0.28em] text-gold">
-          TCR
-        </span>
-        <span className="mt-3 h-px w-12 bg-gold/50" />
-        <span className="mt-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-primary-foreground/70">
-          A Brand by NLU Alumnus
-        </span>
-      </span>
-    );
-  }
+  const onDark = variant === "inverted";
   return (
     <span
-      className="inline-flex items-center gap-3"
-      data-testid="header-logo"
+      className="inline-flex flex-col leading-none"
+      data-testid={onDark ? "footer-logo" : "header-logo"}
       aria-label="TCR — A Brand by NLU Alumnus"
     >
-      <span className="flex items-center justify-center rounded-xl bg-primary px-3.5 py-2 shadow-soft">
-        <span className="pl-[0.24em] font-serif text-xl font-bold leading-none tracking-[0.24em] text-gold">
-          TCR
-        </span>
+      <span
+        className={`pl-[0.28em] font-serif font-bold tracking-[0.28em] text-gold ${
+          onDark ? "text-3xl" : "text-2xl"
+        }`}
+      >
+        TCR
       </span>
-      <span className="hidden flex-col leading-none sm:flex">
-        <span className="h-px w-10 bg-gold" />
-        <span className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-          A Brand by NLU Alumnus
-        </span>
+      <span className={`h-px bg-gold/50 ${onDark ? "mt-3 w-12" : "mt-2 w-9"}`} />
+      <span
+        className={`text-[10px] font-semibold uppercase tracking-[0.24em] ${
+          onDark ? "mt-2 text-primary-foreground/70" : "mt-1.5 text-muted-foreground"
+        }`}
+      >
+        A Brand by NLU Alumnus
       </span>
     </span>
   );
