@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AlertTriangle, ArrowRight, CheckCircle2, ChevronDown, Clock, Copy, Edit3,
   Eye, FileText, Filter, Image, Loader2, MoreHorizontal, Plus, Search, Trash2,
@@ -52,6 +52,11 @@ export function CrudScreen({ entity }: { entity: AdminEntity }) {
   const [drawer, setDrawer] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const rows = entity.key === "blogs" ? blogRows.map((row) => ({ name: row.title, type: row.category, owner: row.author, status: row.status, updated: row.updated, score: row.score })) : entityRows;
+  useEffect(() => {
+    const openDrawer = () => setDrawer(true);
+    window.addEventListener("admin:create", openDrawer);
+    return () => window.removeEventListener("admin:create", openDrawer);
+  }, []);
   return (
     <div className="space-y-6" data-testid={`admin-${entity.key}-crud-screen`}>
       <section className="rounded-3xl border border-border bg-card p-5 shadow-sm">
@@ -121,7 +126,7 @@ function ConfirmDialog({ entity, onClose }: { entity: string; onClose: () => voi
 function Tabs({ labels }: { labels: string[] }) { return <div className="flex gap-2 overflow-x-auto rounded-2xl bg-secondary p-1" data-testid="editor-tabs">{labels.map((label, i) => <button key={label} data-testid={`editor-tab-${label.toLowerCase()}`} className={`min-h-11 rounded-xl px-4 text-sm font-bold ${i === 0 ? "bg-card shadow-sm" : ""}`}>{label}</button>)}</div>; }
 function Field({ label, value, testId }: { label: string; value: string; testId: string }) { return <label className="block text-sm font-bold">{label}<input data-testid={`${testId}-input`} defaultValue={value} className="mt-2 min-h-12 w-full rounded-xl border border-border bg-card px-4 outline-none focus:ring-2 focus:ring-ring" /></label>; }
 function RichText() { return <div data-testid="blog-rich-text-editor" className="rounded-2xl border border-border bg-card p-4"><p className="text-sm font-bold">Rich text editor</p><div className="mt-3 min-h-44 rounded-xl bg-secondary p-4 text-sm text-muted-foreground">Write article content with headings, examples, FAQs, tables and summaries...</div></div>; }
-function TagInput({ tags }: { tags: string[] }) { return <div data-testid="blog-tag-input" className="rounded-2xl border border-border bg-card p-4"><p className="text-sm font-bold">Tags</p><div className="mt-3 flex flex-wrap gap-2">{tags.map((tag) => <span key={tag} className="rounded-full bg-secondary px-3 py-1 text-xs font-bold">{tag}</span>)}<button className="rounded-full border border-border px-3 py-1 text-xs font-bold">+ Add tag</button></div></div>; }
+function TagInput({ tags }: { tags: string[] }) { return <div data-testid="blog-tag-input" className="rounded-2xl border border-border bg-card p-4"><p className="text-sm font-bold">Tags</p><div className="mt-3 flex flex-wrap gap-2">{tags.map((tag) => <span key={tag} data-testid={`blog-tag-${tag.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} className="rounded-full bg-secondary px-3 py-1 text-xs font-bold">{tag}</span>)}<button type="button" data-testid="blog-add-tag-button" className="rounded-full border border-border px-3 py-1 text-xs font-bold">+ Add tag</button></div></div>; }
 function SeoPreview() { return <section data-testid="seo-preview-card" className="rounded-2xl border border-border bg-card p-4"><p className="text-sm font-bold">SEO + Open Graph preview</p><div className="mt-3 rounded-xl border border-border bg-background p-4"><p className="text-xs text-primary">thecourtroom.in/blog/how-to-read-newspaper-for-clat</p><p className="mt-1 font-serif text-xl font-black">How to read the newspaper for CLAT 2027</p><p className="mt-1 text-sm text-muted-foreground">A daily routine for legal awareness, vocabulary and current affairs retention.</p></div><pre className="mt-3 overflow-x-auto rounded-xl bg-secondary p-3 text-xs">{`{ "@type": "Article", "headline": "CLAT guide" }`}</pre></section>; }
 function MediaPicker() { return <section data-testid="media-picker-card" className="rounded-2xl border border-border bg-card p-4"><Image className="h-6 w-6 text-primary" /><p className="mt-3 font-bold">Media picker</p><div className="mt-3 flex aspect-video items-center justify-center rounded-xl border border-dashed border-border bg-secondary text-sm text-muted-foreground">Drop image or choose from library</div></section>; }
 function LivePreview() { return <section data-testid="live-preview-card" className="rounded-2xl border border-border bg-card p-4"><p className="font-bold">Live preview</p><div className="mt-3 rounded-xl bg-secondary p-4"><p className="text-xs font-bold text-primary">Study Plans</p><p className="font-serif text-2xl font-black">How to read the newspaper...</p><p className="mt-2 text-sm text-muted-foreground">Preview of student-facing article card.</p></div></section>; }

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Bell, ChevronRight, Command, Menu, Moon, PanelLeftClose, PanelLeftOpen,
   Plus, Search, Sun, X,
@@ -19,6 +19,15 @@ export function AdminLayout({ children, title, eyebrow = "Admin", crumbs = [], a
   const [commandOpen, setCommandOpen] = useState(false);
   const [dark, setDark] = useState(false);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    return () => document.documentElement.classList.remove("dark");
+  }, [dark]);
+
+  const openCreateFlow = () => {
+    window.dispatchEvent(new CustomEvent("admin:create"));
+  };
+
   const rootClass = dark ? "dark" : "";
   return (
     <div className={rootClass}>
@@ -28,7 +37,7 @@ export function AdminLayout({ children, title, eyebrow = "Admin", crumbs = [], a
           <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur" data-testid="admin-topbar">
             <div className="flex h-16 items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2">
-                <button type="button" data-testid="admin-mobile-menu-button" onClick={() => setMobileOpen(true)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-border bg-card lg:hidden" aria-label="Open navigation"><Menu className="h-5 w-5" /></button>
+                <button type="button" data-testid="admin-mobile-menu-button" onPointerDown={() => setMobileOpen(true)} onClick={() => setMobileOpen(true)} className="relative z-50 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-card lg:hidden" aria-label="Open navigation"><Menu className="h-5 w-5" /></button>
                 <button type="button" data-testid="admin-collapse-sidebar-button" onClick={() => setCollapsed((value) => !value)} className="hidden min-h-11 min-w-11 items-center justify-center rounded-xl border border-border bg-card lg:inline-flex" aria-label="Toggle sidebar">
                   {collapsed ? <PanelLeftOpen className="h-5 w-5" /> : <PanelLeftClose className="h-5 w-5" />}
                 </button>
@@ -42,9 +51,9 @@ export function AdminLayout({ children, title, eyebrow = "Admin", crumbs = [], a
               </div>
               <div className="flex items-center gap-2">
                 <button type="button" data-testid="admin-command-button" onClick={() => setCommandOpen(true)} className="hidden min-h-11 items-center gap-2 rounded-xl border border-border bg-card px-4 text-sm font-bold text-muted-foreground md:inline-flex"><Command className="h-4 w-4" /> Search <span className="rounded bg-secondary px-1.5 py-0.5 text-[10px]">⌘K</span></button>
-                <button type="button" data-testid="admin-theme-toggle-button" onClick={() => setDark((value) => !value)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-border bg-card" aria-label="Toggle theme">{dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}</button>
+                <button type="button" data-testid="admin-theme-toggle-button" aria-pressed={dark} onClick={() => setDark((value) => !value)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-border bg-card" aria-label="Toggle theme">{dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}</button>
                 <button type="button" data-testid="admin-notifications-button" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-border bg-card" aria-label="Notifications"><Bell className="h-5 w-5" /></button>
-                <button type="button" data-testid="admin-primary-action-button" className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-bold text-primary-foreground"><Plus className="h-4 w-4" /> <span className="hidden sm:inline">{actionLabel}</span></button>
+                <button type="button" data-testid="admin-primary-action-button" onClick={openCreateFlow} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-bold text-primary-foreground"><Plus className="h-4 w-4" /> <span className="hidden sm:inline">{actionLabel}</span></button>
               </div>
             </div>
           </header>
