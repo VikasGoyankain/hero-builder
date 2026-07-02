@@ -259,3 +259,55 @@
 @utility animate-rise {
   animation: tcr-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* Premium (dark navy) page utilities used by PremiumEngine pages */
+@utility glass-panel {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 40px rgba(197, 138, 71, 0.25);
+}
+
+@utility premium-rise {
+  animation-name: tcr-rise;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes tcr-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@utility premium-float {
+  animation-name: tcr-float;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes tcr-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility premium-ticker {
+  animation-name: tcr-marquee;
+  animation-duration: 32s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
