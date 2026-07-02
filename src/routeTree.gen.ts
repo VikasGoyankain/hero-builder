@@ -21,6 +21,7 @@ import { Route as FacultiesIndexRouteImport } from './routes/faculties/index'
 import { Route as CoursesIndexRouteImport } from './routes/courses/index'
 import { Route as BranchesIndexRouteImport } from './routes/branches/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as ToppersSlugRouteImport } from './routes/toppers/$slug'
 import { Route as TestimonialsSlugRouteImport } from './routes/testimonials/$slug'
 import { Route as FacultiesSlugRouteImport } from './routes/faculties/$slug'
@@ -30,6 +31,17 @@ import { Route as ConversionSlugRouteImport } from './routes/conversion/$slug'
 import { Route as BrandSlugRouteImport } from './routes/brand/$slug'
 import { Route as BranchesSlugRouteImport } from './routes/branches/$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminForgotPasswordRouteImport } from './routes/admin/forgot-password'
+import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminUsersModuleRouteImport } from './routes/admin/users/$module'
+import { Route as AdminSettingsModuleRouteImport } from './routes/admin/settings/$module'
+import { Route as AdminSeoModuleRouteImport } from './routes/admin/seo/$module'
+import { Route as AdminResultsModuleRouteImport } from './routes/admin/results/$module'
+import { Route as AdminOrganizationModuleRouteImport } from './routes/admin/organization/$module'
+import { Route as AdminMarketingModuleRouteImport } from './routes/admin/marketing/$module'
+import { Route as AdminCmsModuleRouteImport } from './routes/admin/cms/$module'
+import { Route as AdminAcademicsModuleRouteImport } from './routes/admin/academics/$module'
 
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
   id: '/scholarships',
@@ -91,6 +103,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToppersSlugRoute = ToppersSlugRouteImport.update({
   id: '/toppers/$slug',
   path: '/toppers/$slug',
@@ -136,6 +153,61 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminForgotPasswordRoute = AdminForgotPasswordRouteImport.update({
+  id: '/admin/forgot-password',
+  path: '/admin/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersModuleRoute = AdminUsersModuleRouteImport.update({
+  id: '/admin/users/$module',
+  path: '/admin/users/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsModuleRoute = AdminSettingsModuleRouteImport.update({
+  id: '/admin/settings/$module',
+  path: '/admin/settings/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSeoModuleRoute = AdminSeoModuleRouteImport.update({
+  id: '/admin/seo/$module',
+  path: '/admin/seo/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminResultsModuleRoute = AdminResultsModuleRouteImport.update({
+  id: '/admin/results/$module',
+  path: '/admin/results/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminOrganizationModuleRoute = AdminOrganizationModuleRouteImport.update({
+  id: '/admin/organization/$module',
+  path: '/admin/organization/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMarketingModuleRoute = AdminMarketingModuleRouteImport.update({
+  id: '/admin/marketing/$module',
+  path: '/admin/marketing/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCmsModuleRoute = AdminCmsModuleRouteImport.update({
+  id: '/admin/cms/$module',
+  path: '/admin/cms/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAcademicsModuleRoute = AdminAcademicsModuleRouteImport.update({
+  id: '/admin/academics/$module',
+  path: '/admin/academics/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -144,6 +216,9 @@ export interface FileRoutesByFullPath {
   '/resources': typeof ResourcesRoute
   '/results': typeof ResultsRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/forgot-password': typeof AdminForgotPasswordRoute
+  '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/branches/$slug': typeof BranchesSlugRoute
   '/brand/$slug': typeof BrandSlugRoute
@@ -153,12 +228,21 @@ export interface FileRoutesByFullPath {
   '/faculties/$slug': typeof FacultiesSlugRoute
   '/testimonials/$slug': typeof TestimonialsSlugRoute
   '/toppers/$slug': typeof ToppersSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/branches/': typeof BranchesIndexRoute
   '/courses/': typeof CoursesIndexRoute
   '/faculties/': typeof FacultiesIndexRoute
   '/testimonials/': typeof TestimonialsIndexRoute
   '/toppers/': typeof ToppersIndexRoute
+  '/admin/academics/$module': typeof AdminAcademicsModuleRoute
+  '/admin/cms/$module': typeof AdminCmsModuleRoute
+  '/admin/marketing/$module': typeof AdminMarketingModuleRoute
+  '/admin/organization/$module': typeof AdminOrganizationModuleRoute
+  '/admin/results/$module': typeof AdminResultsModuleRoute
+  '/admin/seo/$module': typeof AdminSeoModuleRoute
+  '/admin/settings/$module': typeof AdminSettingsModuleRoute
+  '/admin/users/$module': typeof AdminUsersModuleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -167,6 +251,9 @@ export interface FileRoutesByTo {
   '/resources': typeof ResourcesRoute
   '/results': typeof ResultsRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/forgot-password': typeof AdminForgotPasswordRoute
+  '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/branches/$slug': typeof BranchesSlugRoute
   '/brand/$slug': typeof BrandSlugRoute
@@ -176,12 +263,21 @@ export interface FileRoutesByTo {
   '/faculties/$slug': typeof FacultiesSlugRoute
   '/testimonials/$slug': typeof TestimonialsSlugRoute
   '/toppers/$slug': typeof ToppersSlugRoute
+  '/admin': typeof AdminIndexRoute
   '/blog': typeof BlogIndexRoute
   '/branches': typeof BranchesIndexRoute
   '/courses': typeof CoursesIndexRoute
   '/faculties': typeof FacultiesIndexRoute
   '/testimonials': typeof TestimonialsIndexRoute
   '/toppers': typeof ToppersIndexRoute
+  '/admin/academics/$module': typeof AdminAcademicsModuleRoute
+  '/admin/cms/$module': typeof AdminCmsModuleRoute
+  '/admin/marketing/$module': typeof AdminMarketingModuleRoute
+  '/admin/organization/$module': typeof AdminOrganizationModuleRoute
+  '/admin/results/$module': typeof AdminResultsModuleRoute
+  '/admin/seo/$module': typeof AdminSeoModuleRoute
+  '/admin/settings/$module': typeof AdminSettingsModuleRoute
+  '/admin/users/$module': typeof AdminUsersModuleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -191,6 +287,9 @@ export interface FileRoutesById {
   '/resources': typeof ResourcesRoute
   '/results': typeof ResultsRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/forgot-password': typeof AdminForgotPasswordRoute
+  '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/branches/$slug': typeof BranchesSlugRoute
   '/brand/$slug': typeof BrandSlugRoute
@@ -200,12 +299,21 @@ export interface FileRoutesById {
   '/faculties/$slug': typeof FacultiesSlugRoute
   '/testimonials/$slug': typeof TestimonialsSlugRoute
   '/toppers/$slug': typeof ToppersSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/branches/': typeof BranchesIndexRoute
   '/courses/': typeof CoursesIndexRoute
   '/faculties/': typeof FacultiesIndexRoute
   '/testimonials/': typeof TestimonialsIndexRoute
   '/toppers/': typeof ToppersIndexRoute
+  '/admin/academics/$module': typeof AdminAcademicsModuleRoute
+  '/admin/cms/$module': typeof AdminCmsModuleRoute
+  '/admin/marketing/$module': typeof AdminMarketingModuleRoute
+  '/admin/organization/$module': typeof AdminOrganizationModuleRoute
+  '/admin/results/$module': typeof AdminResultsModuleRoute
+  '/admin/seo/$module': typeof AdminSeoModuleRoute
+  '/admin/settings/$module': typeof AdminSettingsModuleRoute
+  '/admin/users/$module': typeof AdminUsersModuleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -216,6 +324,9 @@ export interface FileRouteTypes {
     | '/resources'
     | '/results'
     | '/scholarships'
+    | '/admin/dashboard'
+    | '/admin/forgot-password'
+    | '/admin/login'
     | '/blog/$slug'
     | '/branches/$slug'
     | '/brand/$slug'
@@ -225,12 +336,21 @@ export interface FileRouteTypes {
     | '/faculties/$slug'
     | '/testimonials/$slug'
     | '/toppers/$slug'
+    | '/admin/'
     | '/blog/'
     | '/branches/'
     | '/courses/'
     | '/faculties/'
     | '/testimonials/'
     | '/toppers/'
+    | '/admin/academics/$module'
+    | '/admin/cms/$module'
+    | '/admin/marketing/$module'
+    | '/admin/organization/$module'
+    | '/admin/results/$module'
+    | '/admin/seo/$module'
+    | '/admin/settings/$module'
+    | '/admin/users/$module'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -239,6 +359,9 @@ export interface FileRouteTypes {
     | '/resources'
     | '/results'
     | '/scholarships'
+    | '/admin/dashboard'
+    | '/admin/forgot-password'
+    | '/admin/login'
     | '/blog/$slug'
     | '/branches/$slug'
     | '/brand/$slug'
@@ -248,12 +371,21 @@ export interface FileRouteTypes {
     | '/faculties/$slug'
     | '/testimonials/$slug'
     | '/toppers/$slug'
+    | '/admin'
     | '/blog'
     | '/branches'
     | '/courses'
     | '/faculties'
     | '/testimonials'
     | '/toppers'
+    | '/admin/academics/$module'
+    | '/admin/cms/$module'
+    | '/admin/marketing/$module'
+    | '/admin/organization/$module'
+    | '/admin/results/$module'
+    | '/admin/seo/$module'
+    | '/admin/settings/$module'
+    | '/admin/users/$module'
   id:
     | '__root__'
     | '/'
@@ -262,6 +394,9 @@ export interface FileRouteTypes {
     | '/resources'
     | '/results'
     | '/scholarships'
+    | '/admin/dashboard'
+    | '/admin/forgot-password'
+    | '/admin/login'
     | '/blog/$slug'
     | '/branches/$slug'
     | '/brand/$slug'
@@ -271,12 +406,21 @@ export interface FileRouteTypes {
     | '/faculties/$slug'
     | '/testimonials/$slug'
     | '/toppers/$slug'
+    | '/admin/'
     | '/blog/'
     | '/branches/'
     | '/courses/'
     | '/faculties/'
     | '/testimonials/'
     | '/toppers/'
+    | '/admin/academics/$module'
+    | '/admin/cms/$module'
+    | '/admin/marketing/$module'
+    | '/admin/organization/$module'
+    | '/admin/results/$module'
+    | '/admin/seo/$module'
+    | '/admin/settings/$module'
+    | '/admin/users/$module'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -286,6 +430,9 @@ export interface RootRouteChildren {
   ResourcesRoute: typeof ResourcesRoute
   ResultsRoute: typeof ResultsRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminForgotPasswordRoute: typeof AdminForgotPasswordRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BranchesSlugRoute: typeof BranchesSlugRoute
   BrandSlugRoute: typeof BrandSlugRoute
@@ -295,12 +442,21 @@ export interface RootRouteChildren {
   FacultiesSlugRoute: typeof FacultiesSlugRoute
   TestimonialsSlugRoute: typeof TestimonialsSlugRoute
   ToppersSlugRoute: typeof ToppersSlugRoute
+  AdminIndexRoute: typeof AdminIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
   BranchesIndexRoute: typeof BranchesIndexRoute
   CoursesIndexRoute: typeof CoursesIndexRoute
   FacultiesIndexRoute: typeof FacultiesIndexRoute
   TestimonialsIndexRoute: typeof TestimonialsIndexRoute
   ToppersIndexRoute: typeof ToppersIndexRoute
+  AdminAcademicsModuleRoute: typeof AdminAcademicsModuleRoute
+  AdminCmsModuleRoute: typeof AdminCmsModuleRoute
+  AdminMarketingModuleRoute: typeof AdminMarketingModuleRoute
+  AdminOrganizationModuleRoute: typeof AdminOrganizationModuleRoute
+  AdminResultsModuleRoute: typeof AdminResultsModuleRoute
+  AdminSeoModuleRoute: typeof AdminSeoModuleRoute
+  AdminSettingsModuleRoute: typeof AdminSettingsModuleRoute
+  AdminUsersModuleRoute: typeof AdminUsersModuleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -389,6 +545,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/toppers/$slug': {
       id: '/toppers/$slug'
       path: '/toppers/$slug'
@@ -452,6 +615,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/forgot-password': {
+      id: '/admin/forgot-password'
+      path: '/admin/forgot-password'
+      fullPath: '/admin/forgot-password'
+      preLoaderRoute: typeof AdminForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/users/$module': {
+      id: '/admin/users/$module'
+      path: '/admin/users/$module'
+      fullPath: '/admin/users/$module'
+      preLoaderRoute: typeof AdminUsersModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/$module': {
+      id: '/admin/settings/$module'
+      path: '/admin/settings/$module'
+      fullPath: '/admin/settings/$module'
+      preLoaderRoute: typeof AdminSettingsModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/seo/$module': {
+      id: '/admin/seo/$module'
+      path: '/admin/seo/$module'
+      fullPath: '/admin/seo/$module'
+      preLoaderRoute: typeof AdminSeoModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/results/$module': {
+      id: '/admin/results/$module'
+      path: '/admin/results/$module'
+      fullPath: '/admin/results/$module'
+      preLoaderRoute: typeof AdminResultsModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/organization/$module': {
+      id: '/admin/organization/$module'
+      path: '/admin/organization/$module'
+      fullPath: '/admin/organization/$module'
+      preLoaderRoute: typeof AdminOrganizationModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/marketing/$module': {
+      id: '/admin/marketing/$module'
+      path: '/admin/marketing/$module'
+      fullPath: '/admin/marketing/$module'
+      preLoaderRoute: typeof AdminMarketingModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/cms/$module': {
+      id: '/admin/cms/$module'
+      path: '/admin/cms/$module'
+      fullPath: '/admin/cms/$module'
+      preLoaderRoute: typeof AdminCmsModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/academics/$module': {
+      id: '/admin/academics/$module'
+      path: '/admin/academics/$module'
+      fullPath: '/admin/academics/$module'
+      preLoaderRoute: typeof AdminAcademicsModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -462,6 +702,9 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesRoute: ResourcesRoute,
   ResultsRoute: ResultsRoute,
   ScholarshipsRoute: ScholarshipsRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminForgotPasswordRoute: AdminForgotPasswordRoute,
+  AdminLoginRoute: AdminLoginRoute,
   BlogSlugRoute: BlogSlugRoute,
   BranchesSlugRoute: BranchesSlugRoute,
   BrandSlugRoute: BrandSlugRoute,
@@ -471,12 +714,21 @@ const rootRouteChildren: RootRouteChildren = {
   FacultiesSlugRoute: FacultiesSlugRoute,
   TestimonialsSlugRoute: TestimonialsSlugRoute,
   ToppersSlugRoute: ToppersSlugRoute,
+  AdminIndexRoute: AdminIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
   BranchesIndexRoute: BranchesIndexRoute,
   CoursesIndexRoute: CoursesIndexRoute,
   FacultiesIndexRoute: FacultiesIndexRoute,
   TestimonialsIndexRoute: TestimonialsIndexRoute,
   ToppersIndexRoute: ToppersIndexRoute,
+  AdminAcademicsModuleRoute: AdminAcademicsModuleRoute,
+  AdminCmsModuleRoute: AdminCmsModuleRoute,
+  AdminMarketingModuleRoute: AdminMarketingModuleRoute,
+  AdminOrganizationModuleRoute: AdminOrganizationModuleRoute,
+  AdminResultsModuleRoute: AdminResultsModuleRoute,
+  AdminSeoModuleRoute: AdminSeoModuleRoute,
+  AdminSettingsModuleRoute: AdminSettingsModuleRoute,
+  AdminUsersModuleRoute: AdminUsersModuleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
