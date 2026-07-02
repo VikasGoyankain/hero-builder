@@ -9,38 +9,298 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ScholarshipsRouteImport } from './routes/scholarships'
+import { Route as ResultsRouteImport } from './routes/results'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToppersIndexRouteImport } from './routes/toppers/index'
+import { Route as TestimonialsIndexRouteImport } from './routes/testimonials/index'
+import { Route as FacultiesIndexRouteImport } from './routes/faculties/index'
+import { Route as CoursesIndexRouteImport } from './routes/courses/index'
+import { Route as BranchesIndexRouteImport } from './routes/branches/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as ToppersSlugRouteImport } from './routes/toppers/$slug'
+import { Route as TestimonialsSlugRouteImport } from './routes/testimonials/$slug'
+import { Route as FacultiesSlugRouteImport } from './routes/faculties/$slug'
+import { Route as CoursesSlugRouteImport } from './routes/courses/$slug'
+import { Route as BranchesSlugRouteImport } from './routes/branches/$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
+const ScholarshipsRoute = ScholarshipsRouteImport.update({
+  id: '/scholarships',
+  path: '/scholarships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToppersIndexRoute = ToppersIndexRouteImport.update({
+  id: '/toppers/',
+  path: '/toppers/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimonialsIndexRoute = TestimonialsIndexRouteImport.update({
+  id: '/testimonials/',
+  path: '/testimonials/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacultiesIndexRoute = FacultiesIndexRouteImport.update({
+  id: '/faculties/',
+  path: '/faculties/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesIndexRoute = CoursesIndexRouteImport.update({
+  id: '/courses/',
+  path: '/courses/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BranchesIndexRoute = BranchesIndexRouteImport.update({
+  id: '/branches/',
+  path: '/branches/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToppersSlugRoute = ToppersSlugRouteImport.update({
+  id: '/toppers/$slug',
+  path: '/toppers/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimonialsSlugRoute = TestimonialsSlugRouteImport.update({
+  id: '/testimonials/$slug',
+  path: '/testimonials/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacultiesSlugRoute = FacultiesSlugRouteImport.update({
+  id: '/faculties/$slug',
+  path: '/faculties/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesSlugRoute = CoursesSlugRouteImport.update({
+  id: '/courses/$slug',
+  path: '/courses/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BranchesSlugRoute = BranchesSlugRouteImport.update({
+  id: '/branches/$slug',
+  path: '/branches/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/faqs': typeof FaqsRoute
+  '/resources': typeof ResourcesRoute
+  '/results': typeof ResultsRoute
+  '/scholarships': typeof ScholarshipsRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/branches/$slug': typeof BranchesSlugRoute
+  '/courses/$slug': typeof CoursesSlugRoute
+  '/faculties/$slug': typeof FacultiesSlugRoute
+  '/testimonials/$slug': typeof TestimonialsSlugRoute
+  '/toppers/$slug': typeof ToppersSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/branches/': typeof BranchesIndexRoute
+  '/courses/': typeof CoursesIndexRoute
+  '/faculties/': typeof FacultiesIndexRoute
+  '/testimonials/': typeof TestimonialsIndexRoute
+  '/toppers/': typeof ToppersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/faqs': typeof FaqsRoute
+  '/resources': typeof ResourcesRoute
+  '/results': typeof ResultsRoute
+  '/scholarships': typeof ScholarshipsRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/branches/$slug': typeof BranchesSlugRoute
+  '/courses/$slug': typeof CoursesSlugRoute
+  '/faculties/$slug': typeof FacultiesSlugRoute
+  '/testimonials/$slug': typeof TestimonialsSlugRoute
+  '/toppers/$slug': typeof ToppersSlugRoute
+  '/blog': typeof BlogIndexRoute
+  '/branches': typeof BranchesIndexRoute
+  '/courses': typeof CoursesIndexRoute
+  '/faculties': typeof FacultiesIndexRoute
+  '/testimonials': typeof TestimonialsIndexRoute
+  '/toppers': typeof ToppersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/events': typeof EventsRoute
+  '/faqs': typeof FaqsRoute
+  '/resources': typeof ResourcesRoute
+  '/results': typeof ResultsRoute
+  '/scholarships': typeof ScholarshipsRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/branches/$slug': typeof BranchesSlugRoute
+  '/courses/$slug': typeof CoursesSlugRoute
+  '/faculties/$slug': typeof FacultiesSlugRoute
+  '/testimonials/$slug': typeof TestimonialsSlugRoute
+  '/toppers/$slug': typeof ToppersSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/branches/': typeof BranchesIndexRoute
+  '/courses/': typeof CoursesIndexRoute
+  '/faculties/': typeof FacultiesIndexRoute
+  '/testimonials/': typeof TestimonialsIndexRoute
+  '/toppers/': typeof ToppersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/events'
+    | '/faqs'
+    | '/resources'
+    | '/results'
+    | '/scholarships'
+    | '/blog/$slug'
+    | '/branches/$slug'
+    | '/courses/$slug'
+    | '/faculties/$slug'
+    | '/testimonials/$slug'
+    | '/toppers/$slug'
+    | '/blog/'
+    | '/branches/'
+    | '/courses/'
+    | '/faculties/'
+    | '/testimonials/'
+    | '/toppers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/events'
+    | '/faqs'
+    | '/resources'
+    | '/results'
+    | '/scholarships'
+    | '/blog/$slug'
+    | '/branches/$slug'
+    | '/courses/$slug'
+    | '/faculties/$slug'
+    | '/testimonials/$slug'
+    | '/toppers/$slug'
+    | '/blog'
+    | '/branches'
+    | '/courses'
+    | '/faculties'
+    | '/testimonials'
+    | '/toppers'
+  id:
+    | '__root__'
+    | '/'
+    | '/events'
+    | '/faqs'
+    | '/resources'
+    | '/results'
+    | '/scholarships'
+    | '/blog/$slug'
+    | '/branches/$slug'
+    | '/courses/$slug'
+    | '/faculties/$slug'
+    | '/testimonials/$slug'
+    | '/toppers/$slug'
+    | '/blog/'
+    | '/branches/'
+    | '/courses/'
+    | '/faculties/'
+    | '/testimonials/'
+    | '/toppers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EventsRoute: typeof EventsRoute
+  FaqsRoute: typeof FaqsRoute
+  ResourcesRoute: typeof ResourcesRoute
+  ResultsRoute: typeof ResultsRoute
+  ScholarshipsRoute: typeof ScholarshipsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  BranchesSlugRoute: typeof BranchesSlugRoute
+  CoursesSlugRoute: typeof CoursesSlugRoute
+  FacultiesSlugRoute: typeof FacultiesSlugRoute
+  TestimonialsSlugRoute: typeof TestimonialsSlugRoute
+  ToppersSlugRoute: typeof ToppersSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  BranchesIndexRoute: typeof BranchesIndexRoute
+  CoursesIndexRoute: typeof CoursesIndexRoute
+  FacultiesIndexRoute: typeof FacultiesIndexRoute
+  TestimonialsIndexRoute: typeof TestimonialsIndexRoute
+  ToppersIndexRoute: typeof ToppersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/scholarships': {
+      id: '/scholarships'
+      path: '/scholarships'
+      fullPath: '/scholarships'
+      preLoaderRoute: typeof ScholarshipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +308,112 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/toppers/': {
+      id: '/toppers/'
+      path: '/toppers'
+      fullPath: '/toppers/'
+      preLoaderRoute: typeof ToppersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonials/': {
+      id: '/testimonials/'
+      path: '/testimonials'
+      fullPath: '/testimonials/'
+      preLoaderRoute: typeof TestimonialsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faculties/': {
+      id: '/faculties/'
+      path: '/faculties'
+      fullPath: '/faculties/'
+      preLoaderRoute: typeof FacultiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses/': {
+      id: '/courses/'
+      path: '/courses'
+      fullPath: '/courses/'
+      preLoaderRoute: typeof CoursesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches/': {
+      id: '/branches/'
+      path: '/branches'
+      fullPath: '/branches/'
+      preLoaderRoute: typeof BranchesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/toppers/$slug': {
+      id: '/toppers/$slug'
+      path: '/toppers/$slug'
+      fullPath: '/toppers/$slug'
+      preLoaderRoute: typeof ToppersSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonials/$slug': {
+      id: '/testimonials/$slug'
+      path: '/testimonials/$slug'
+      fullPath: '/testimonials/$slug'
+      preLoaderRoute: typeof TestimonialsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faculties/$slug': {
+      id: '/faculties/$slug'
+      path: '/faculties/$slug'
+      fullPath: '/faculties/$slug'
+      preLoaderRoute: typeof FacultiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses/$slug': {
+      id: '/courses/$slug'
+      path: '/courses/$slug'
+      fullPath: '/courses/$slug'
+      preLoaderRoute: typeof CoursesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches/$slug': {
+      id: '/branches/$slug'
+      path: '/branches/$slug'
+      fullPath: '/branches/$slug'
+      preLoaderRoute: typeof BranchesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EventsRoute: EventsRoute,
+  FaqsRoute: FaqsRoute,
+  ResourcesRoute: ResourcesRoute,
+  ResultsRoute: ResultsRoute,
+  ScholarshipsRoute: ScholarshipsRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  BranchesSlugRoute: BranchesSlugRoute,
+  CoursesSlugRoute: CoursesSlugRoute,
+  FacultiesSlugRoute: FacultiesSlugRoute,
+  TestimonialsSlugRoute: TestimonialsSlugRoute,
+  ToppersSlugRoute: ToppersSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  BranchesIndexRoute: BranchesIndexRoute,
+  CoursesIndexRoute: CoursesIndexRoute,
+  FacultiesIndexRoute: FacultiesIndexRoute,
+  TestimonialsIndexRoute: TestimonialsIndexRoute,
+  ToppersIndexRoute: ToppersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

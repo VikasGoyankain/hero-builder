@@ -46,11 +46,11 @@ export const Route = createFileRoute("/")({
 /* ---------------- shared ---------------- */
 
 const navItems = [
-  { label: "Courses", href: "#courses" },
-  { label: "Results", href: "#results" },
-  { label: "Mentors", href: "#mentors" },
-  { label: "Campuses", href: "#campuses" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Courses", href: "/courses" },
+  { label: "Blog", href: "/blog" },
+  { label: "Faculty", href: "/faculties" },
+  { label: "Branches", href: "/branches" },
+  { label: "Results", href: "/results" },
 ];
 
 function Section({
@@ -531,7 +531,13 @@ function FinalCTA() {
 }
 
 function Footer() {
-  const links = ["Courses", "Results", "Mentors", "Campuses", "FAQ"];
+  const links = [
+    { label: "Courses", href: "/courses" },
+    { label: "Blog", href: "/blog" },
+    { label: "Faculty", href: "/faculties" },
+    { label: "Branches", href: "/branches" },
+    { label: "FAQs", href: "/faqs" },
+  ];
   return (
     <footer className="bg-foreground pb-20 text-background lg:pb-0" data-testid="site-footer">
       <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 md:px-8">
@@ -548,8 +554,8 @@ function Footer() {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Quick links</p>
             <div className="mt-4 grid grid-cols-2 gap-2">
               {links.map((link) => (
-                <a key={link} href={`#${link === "Mentors" ? "mentors" : link.toLowerCase()}`} data-testid={`footer-${link.toLowerCase()}-link`} className="flex min-h-12 items-center rounded-md border border-background/15 px-4 text-sm font-semibold text-background/75 transition-colors hover:text-background">
-                  {link}
+                <a key={link.label} href={link.href} data-testid={`footer-${link.label.toLowerCase()}-link`} className="flex min-h-12 items-center rounded-md border border-background/15 px-4 text-sm font-semibold text-background/75 transition-colors hover:text-background">
+                  {link.label}
                 </a>
               ))}
             </div>
