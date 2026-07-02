@@ -7,6 +7,11 @@
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
 }
 
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
