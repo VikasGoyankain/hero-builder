@@ -238,7 +238,15 @@ function useCountUp(target: number, durationMs = 1600) {
   return { ref, value };
 }
 
-function CountUp({ to, prefix = "", suffix = "" }: { to: number; prefix?: string; suffix?: string }) {
+function CountUp({
+  to,
+  prefix = "",
+  suffix = "",
+}: {
+  to: number;
+  prefix?: string;
+  suffix?: string;
+}) {
   const { ref, value } = useCountUp(to);
   return (
     <span ref={ref}>
@@ -259,7 +267,12 @@ function Nav() {
       data-testid="site-header"
     >
       <div className="mx-auto flex h-18 max-w-[1200px] items-center justify-between px-4 py-3 sm:px-6 md:px-8">
-        <a href="#top" className="flex min-h-12 items-center" data-testid="header-logo-link" aria-label="TCR home">
+        <a
+          href="#top"
+          className="flex min-h-12 items-center"
+          data-testid="header-logo-link"
+          aria-label="TCR home"
+        >
           <TcrLogo />
         </a>
 
@@ -300,12 +313,19 @@ function Nav() {
             data-testid="mobile-menu-toggle-button"
             className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-lg border border-border bg-card text-foreground lg:hidden"
           >
-            {open ? <X className="h-5 w-5" strokeWidth={1.75} /> : <Menu className="h-5 w-5" strokeWidth={1.75} />}
+            {open ? (
+              <X className="h-5 w-5" strokeWidth={1.75} />
+            ) : (
+              <Menu className="h-5 w-5" strokeWidth={1.75} />
+            )}
           </button>
         </div>
       </div>
       {open && (
-        <nav className="border-t border-border bg-card px-4 py-4 lg:hidden" data-testid="mobile-menu-panel">
+        <nav
+          className="border-t border-border bg-card px-4 py-4 lg:hidden"
+          data-testid="mobile-menu-panel"
+        >
           <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-2">
             {navItems.map((item) => (
               <a
@@ -416,7 +436,10 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[560px] lg:max-w-none" data-testid="hero-image-card">
+        <div
+          className="relative mx-auto w-full max-w-[560px] lg:max-w-none"
+          data-testid="hero-image-card"
+        >
           <div
             className="absolute -left-3 top-10 z-10 hidden rounded-full border border-gold/40 bg-card px-4 py-2 text-xs font-semibold tracking-[0.18em] text-primary shadow-soft sm:block"
             style={{ transform: `translate(${tilt.x * 24}px, ${tilt.y * 24}px)` }}
@@ -637,8 +660,16 @@ function Courses() {
       text: "One and two-year classroom programs with weekly mocks and mentor reviews.",
       featured: true,
     },
-    { title: "AILET", tag: "NLU Delhi", text: "Focused preparation tuned to the AILET pattern and pace." },
-    { title: "Foundation", tag: "Class 9–11", text: "Reading and reasoning habits, built before exam pressure begins." },
+    {
+      title: "AILET",
+      tag: "NLU Delhi",
+      text: "Focused preparation tuned to the AILET pattern and pace.",
+    },
+    {
+      title: "Foundation",
+      tag: "Class 9–11",
+      text: "Reading and reasoning habits, built before exam pressure begins.",
+    },
   ];
   return (
     <Section id="courses" eyebrow="Programs" title={<>Find the path that fits your year.</>}>
@@ -647,7 +678,9 @@ function Courses() {
           <article
             key={course.title}
             className={`group flex flex-col rounded-2xl border p-8 shadow-soft transition-all duration-200 hover:-translate-y-1.5 hover:scale-[1.02] hover:shadow-premium ${
-              course.featured ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card"
+              course.featured
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-card"
             }`}
             data-testid={`course-${course.title.toLowerCase()}-card`}
           >
@@ -869,7 +902,10 @@ function FAQ() {
   ];
   return (
     <Section id="faq" eyebrow="Questions" title={<>Answers, before you call.</>}>
-      <div className="max-w-3xl overflow-hidden rounded-2xl border border-border bg-card" data-testid="faq-list">
+      <div
+        className="max-w-3xl overflow-hidden rounded-2xl border border-border bg-card"
+        data-testid="faq-list"
+      >
         {items.map((item, index) => (
           <div key={item.q} className="border-b border-border last:border-b-0">
             <button
@@ -902,14 +938,18 @@ function FAQ() {
 
 function FinalCTA() {
   return (
-    <section className="mx-auto max-w-[1200px] px-4 pb-20 sm:px-6 md:px-8" data-testid="final-cta-section">
+    <section
+      className="mx-auto max-w-[1200px] px-4 pb-20 sm:px-6 md:px-8"
+      data-testid="final-cta-section"
+    >
       <div
         id="final-cta"
         className="relative overflow-hidden rounded-[28px] bg-[linear-gradient(135deg,#081E45_0%,#14366E_100%)] px-6 py-16 text-center text-primary-foreground shadow-premium-lg md:px-12 md:py-24"
       >
         <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-gold/15 blur-[100px]" />
         <p className="relative flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-gold">
-          <span className="h-px w-6 bg-gold" /> Preparation with purpose <span className="h-px w-6 bg-gold" />
+          <span className="h-px w-6 bg-gold" /> Preparation with purpose{" "}
+          <span className="h-px w-6 bg-gold" />
         </p>
         <h2
           className="relative mx-auto mt-6 max-w-3xl font-serif text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
