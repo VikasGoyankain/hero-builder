@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HubDetailPage } from "@/components/marketing/HubPages";
+import { HubDetailPage, HubNotFoundPage } from "@/components/marketing/HubPages";
 import { getHubItem, hubConfigs } from "@/lib/hub-data";
 
 export const Route = createFileRoute("/courses/$slug")({
-  head: ({ params }) => ({ meta: [{ title: `${getHubItem("courses", params.slug).title} | TCR Courses` }, { name: "description", content: getHubItem("courses", params.slug).subtitle }] }),
+  head: ({ params }) => ({ meta: [{ title: `${getHubItem("courses", params.slug)?.title ?? "Course not found"} | TCR Courses` }, { name: "description", content: getHubItem("courses", params.slug)?.subtitle ?? hubConfigs.courses.description }] }),
   component: CourseDetail,
 });
 
 function CourseDetail() {
   const { slug } = Route.useParams();
-  return <HubDetailPage config={hubConfigs.courses} item={getHubItem("courses", slug)} />;
+  const item = getHubItem("courses", slug);
+  return item ? <HubDetailPage config={hubConfigs.courses} item={item} /> : <HubNotFoundPage hubPath="/courses" hubTitle="Courses" />;
 }

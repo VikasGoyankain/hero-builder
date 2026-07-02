@@ -381,4 +381,4 @@ export const utilityHubs = {
 };
 
 export const getHubItem = (kind: HubKind, slug: string) =>
-  hubConfigs[kind].items.find((item) => item.slug === slug) ?? hubConfigs[kind].items[0];
+  hubConfigs[kind].items.find((item) => item.slug === slug);

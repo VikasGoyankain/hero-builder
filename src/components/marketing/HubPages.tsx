@@ -171,6 +171,19 @@ export function UtilityHubPage({ eyebrow, title, description, cards, testId }: {
   );
 }
 
+export function HubNotFoundPage({ hubPath, hubTitle }: { hubPath: string; hubTitle: string }) {
+  return (
+    <HubShell>
+      <main className="mx-auto max-w-[900px] px-4 py-20 sm:px-6 md:px-8" data-testid="hub-not-found-page">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Content not found</p>
+        <h1 className="mt-4 font-serif text-4xl font-black leading-tight sm:text-5xl" data-testid="hub-not-found-heading">This content hub item is not available.</h1>
+        <p className="mt-5 text-base leading-relaxed text-muted-foreground" data-testid="hub-not-found-description">Explore the main {hubTitle} hub for current articles, courses, profiles, and resources.</p>
+        <a href={hubPath} data-testid="hub-not-found-back-link" className="mt-8 inline-flex min-h-12 items-center rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground">Back to {hubTitle}</a>
+      </main>
+    </HubShell>
+  );
+}
+
 function ContentBlock({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return <section id={id} className="rounded-2xl border border-border bg-card p-6 shadow-sm" data-testid={`content-${id}`}><h2 className="font-serif text-3xl font-black">{title}</h2><div className="mt-4">{children}</div></section>;
 }
