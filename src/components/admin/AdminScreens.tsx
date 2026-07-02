@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import {
   AlertTriangle,
   ArrowRight,
@@ -25,6 +26,10 @@ import {
   entityRows,
   type AdminEntity,
 } from "@/lib/admin/admin-data";
+import { ContentManager } from "@/components/admin/ContentManager";
+import { adminKeyToHubKind } from "@/lib/content";
+import { signInWithPassword, useSupabaseAuth } from "@/lib/auth";
+import { isSupabaseConfigured } from "@/lib/supabase";
 
 export function AdminDashboardScreen() {
   return (
@@ -139,6 +144,14 @@ export function ModuleOverviewScreen({ section }: { section: string }) {
 }
 
 export function CrudScreen({ entity }: { entity: AdminEntity }) {
+  const hubKind = adminKeyToHubKind(entity.key);
+  if (hubKind) {
+    return <ContentManager hubKind={hubKind} label={entity.label} publicPath={`/${hubKind}`} />;
+  }
+  return <LegacyCrudScreen entity={entity} />;
+}
+
+function LegacyCrudScreen({ entity }: { entity: AdminEntity }) {
   const [drawer, setDrawer] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const rows =
@@ -320,6 +333,33 @@ export function CrudScreen({ entity }: { entity: AdminEntity }) {
 }
 
 export function AdminLoginScreen() {
+  const navigate = useNavigate();
+  const { session, loading } = useSupabaseAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!loading && session) {
+      navigate({ to: "/admin/dashboard" });
+    }
+  }, [loading, session, navigate]);
+
+  const onSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setError(null);
+    setSubmitting(true);
+    try {
+      await signInWithPassword(email.trim(), password);
+      navigate({ to: "/admin/dashboard" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to sign in.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div
       className="min-h-screen bg-[linear-gradient(180deg,#FAF8F4,#F3EFE8)] px-4 py-10 text-foreground"
@@ -330,10 +370,10 @@ export function AdminLoginScreen() {
           className="hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm lg:block"
           data-testid="admin-login-brand-panel"
         >
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
             The Court Room OS
           </p>
-          <h1 className="mt-5 font-serif text-5xl font-black leading-tight">
+          <h1 className="mt-5 font-serif text-5xl font-bold leading-tight">
             Premium coaching operations, without ERP clutter.
           </h1>
           <p className="mt-5 text-muted-foreground">
@@ -341,8 +381,8 @@ export function AdminLoginScreen() {
           </p>
           <div className="mt-8 grid gap-3">
             {["Role-aware access", "CMS + Academics + SEO", "Mobile-first admin"].map((item) => (
-              <div key={item} className="rounded-xl bg-secondary p-4 font-bold">
-                <CheckCircle2 className="mr-2 inline h-5 w-5 text-primary" />
+              <div key={item} className="rounded-xl bg-secondary p-4 font-semibold">
+                <CheckCircle2 className="mr-2 inline h-5 w-5 text-gold" />
                 {item}
               </div>
             ))}
@@ -352,49 +392,66 @@ export function AdminLoginScreen() {
           className="mx-auto w-full max-w-md rounded-[2rem] border border-border bg-card p-6 shadow-sm sm:p-8"
           data-testid="admin-login-card"
         >
-          <p className="font-serif text-4xl font-black text-primary">TCR Admin</p>
-          <h2 className="mt-6 font-serif text-3xl font-black">Sign in to workspace</h2>
+          <p className="font-serif text-4xl font-bold text-gold">TCR Admin</p>
+          <h2 className="mt-6 font-serif text-3xl font-bold">Sign in to workspace</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Choose a role preview and continue with your admin account.
+            Sign in with your Supabase admin account to manage content.
           </p>
-          <div className="mt-5 grid grid-cols-3 gap-2">
-            {["Owner", "Editor", "Counsellor"].map((role) => (
-              <button
-                key={role}
-                data-testid={`admin-login-role-${role.toLowerCase()}-button`}
-                className="min-h-11 rounded-xl border border-border bg-secondary text-xs font-bold"
-              >
-                {role}
-              </button>
-            ))}
-          </div>
-          <label className="mt-6 block text-sm font-bold">
-            Email
-            <input
-              data-testid="admin-login-email-input"
-              className="mt-2 min-h-12 w-full rounded-xl border border-border bg-background px-4 outline-none focus:ring-2 focus:ring-ring"
-              placeholder="admin@thecourtroom.in"
-            />
-          </label>
-          <label className="mt-4 block text-sm font-bold">
-            Password
-            <input
-              data-testid="admin-login-password-input"
-              type="password"
-              className="mt-2 min-h-12 w-full rounded-xl border border-border bg-background px-4 outline-none focus:ring-2 focus:ring-ring"
-              placeholder="••••••••"
-            />
-          </label>
-          <button
-            data-testid="admin-login-submit-button"
-            className="mt-6 min-h-12 w-full rounded-xl bg-primary text-sm font-bold text-primary-foreground"
-          >
-            Continue
-          </button>
+          {!isSupabaseConfigured && (
+            <p
+              className="mt-5 rounded-lg border border-gold/30 bg-gold/10 px-4 py-3 text-sm font-medium text-foreground"
+              data-testid="admin-login-not-configured"
+            >
+              Supabase is not connected. Set <code>VITE_SUPABASE_URL</code> and{" "}
+              <code>VITE_SUPABASE_ANON_KEY</code> to enable sign-in.
+            </p>
+          )}
+          {error && (
+            <p
+              className="mt-5 rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive"
+              data-testid="admin-login-error"
+            >
+              {error}
+            </p>
+          )}
+          <form onSubmit={onSubmit}>
+            <label className="mt-6 block text-sm font-semibold">
+              Email
+              <input
+                data-testid="admin-login-email-input"
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                autoComplete="email"
+                className="mt-2 min-h-12 w-full rounded-lg border border-border bg-background px-4 outline-none focus:ring-2 focus:ring-ring"
+                placeholder="admin@thecourtroom.in"
+              />
+            </label>
+            <label className="mt-4 block text-sm font-semibold">
+              Password
+              <input
+                data-testid="admin-login-password-input"
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                autoComplete="current-password"
+                className="mt-2 min-h-12 w-full rounded-lg border border-border bg-background px-4 outline-none focus:ring-2 focus:ring-ring"
+                placeholder="••••••••"
+              />
+            </label>
+            <button
+              type="submit"
+              disabled={submitting || !isSupabaseConfigured}
+              data-testid="admin-login-submit-button"
+              className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-semibold text-primary-foreground disabled:opacity-60"
+            >
+              {submitting && <Loader2 className="h-4 w-4 animate-spin" />} Continue
+            </button>
+          </form>
           <a
             href="/admin/forgot-password"
             data-testid="admin-forgot-password-link"
-            className="mt-4 block text-center text-sm font-bold text-primary"
+            className="mt-4 block text-center text-sm font-semibold text-primary"
           >
             Forgot password?
           </a>
