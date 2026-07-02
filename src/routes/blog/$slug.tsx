@@ -1,14 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HubDetailPage, HubNotFoundPage } from "@/components/marketing/HubPages";
 import { getHubItem, hubConfigs } from "@/lib/hub-data";
+import { fetchPublishedItem } from "@/lib/content";
 
 export const Route = createFileRoute("/blog/$slug")({
-  head: ({ params }) => ({ meta: [{ title: `${getHubItem("blog", params.slug)?.title ?? "Blog not found"} | TCR Blog` }, { name: "description", content: getHubItem("blog", params.slug)?.subtitle ?? hubConfigs.blog.description }] }),
+  loader: async ({ params }) => ({ item: await fetchPublishedItem("blog", params.slug) }),
+  head: ({ params, loaderData }) => {
+    const item = loaderData?.item ?? getHubItem("blog", params.slug);
+    return {
+      meta: [
+        { title: `${item?.title ?? "Blog not found"} | TCR Blog` },
+        { name: "description", content: item?.subtitle ?? hubConfigs.blog.description },
+      ],
+    };
+  },
   component: BlogDetail,
 });
 
 function BlogDetail() {
-  const { slug } = Route.useParams();
-  const item = getHubItem("blog", slug);
-  return item ? <HubDetailPage config={hubConfigs.blog} item={item} /> : <HubNotFoundPage hubPath="/blog" hubTitle="Blog" />;
+  const { item } = Route.useLoaderData();
+  return item ? (
+    <HubDetailPage config={hubConfigs.blog} item={item} />
+  ) : (
+    <HubNotFoundPage hubPath="/blog" hubTitle="Blog" />
+  );
 }
